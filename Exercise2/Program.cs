@@ -24,9 +24,9 @@ namespace Exercise2 {
         }
         //メートルからインチへの対応表を出力
         private static void PrintInchToMeterList(int start, int stop) {            
-                for (int inch = start; inch <= stop; inch++) {
-                    double meter = InchConverter.ToMeter(inch);
-                    Console.WriteLine("{0} inch = {1:0.0000} m", inch, meter);
+            for (int inch = start; inch <= stop; inch++) {
+                double meter = InchConverter.ToMeter(inch);
+                Console.WriteLine("{0} inch = {1:0.0000} m", inch, meter);
             }
         }
     }
