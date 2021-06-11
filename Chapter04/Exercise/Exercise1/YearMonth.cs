@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exercise1 {
     //4.1.1
-    class YearMonth {
+    public class YearMonth {
         public int Year { get; private set; }
 
         public int Month { get; private set; }
@@ -17,6 +17,7 @@ namespace Exercise1 {
         }
 
         //4.1.2
+        //21世紀ならTrue(プロパティ)
         public bool Is21Century {
             get { return 2001 <= Year && Year <= 2100; }
         }

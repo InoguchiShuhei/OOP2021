@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{06B978F7-B94A-4A26-B1FA-F14640427B02}</ProjectGuid>
+    <ProjectGuid>{9DB7BDEA-5C43-4D22-831B-E76919058637}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Exercise</RootNamespace>
-    <AssemblyName>Exercise</AssemblyName>
+    <RootNamespace>Exercise2</RootNamespace>
+    <AssemblyName>Exercise2</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -48,6 +48,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\DistanceConverter\DistanceConverter.csproj">
+      <Project>{d38b8367-6680-4eb7-baf1-6175574aead3}</Project>
+      <Name>DistanceConverter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Section01\Section01.csproj">
+      <Project>{7f2b309a-a995-4cd6-9370-a434e0a5fc05}</Project>
+      <Name>Section01</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Exercise1\Exercise1.csproj">
+      <Project>{5cca801d-10bd-4ec2-bdea-c1e6ddaa58ce}</Project>
+      <Name>Exercise1</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
