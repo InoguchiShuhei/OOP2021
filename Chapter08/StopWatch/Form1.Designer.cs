@@ -24,30 +24,32 @@ namespace StopWatch {
         /// コード エディターで変更しないでください。
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.lbTimerDisp = new System.Windows.Forms.Label();
             this.StartButton = new System.Windows.Forms.Button();
             this.StopButton = new System.Windows.Forms.Button();
             this.ResetButton = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.RapButton = new System.Windows.Forms.Button();
+            this.Items = new System.Windows.Forms.ListBox();
+            this.tmDisp = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // lbTimerDisp
             // 
             this.lbTimerDisp.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lbTimerDisp.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.lbTimerDisp.Location = new System.Drawing.Point(43, 31);
+            this.lbTimerDisp.Location = new System.Drawing.Point(50, 43);
             this.lbTimerDisp.Name = "lbTimerDisp";
-            this.lbTimerDisp.Size = new System.Drawing.Size(382, 60);
+            this.lbTimerDisp.Size = new System.Drawing.Size(347, 60);
             this.lbTimerDisp.TabIndex = 0;
             this.lbTimerDisp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // StartButton
             // 
             this.StartButton.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.StartButton.Location = new System.Drawing.Point(43, 109);
+            this.StartButton.Location = new System.Drawing.Point(50, 135);
             this.StartButton.Name = "StartButton";
-            this.StartButton.Size = new System.Drawing.Size(188, 92);
+            this.StartButton.Size = new System.Drawing.Size(152, 65);
             this.StartButton.TabIndex = 1;
             this.StartButton.Text = "スタート";
             this.StartButton.UseVisualStyleBackColor = true;
@@ -56,52 +58,62 @@ namespace StopWatch {
             // StopButton
             // 
             this.StopButton.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.StopButton.Location = new System.Drawing.Point(237, 109);
+            this.StopButton.Location = new System.Drawing.Point(245, 135);
             this.StopButton.Name = "StopButton";
-            this.StopButton.Size = new System.Drawing.Size(188, 92);
+            this.StopButton.Size = new System.Drawing.Size(152, 65);
             this.StopButton.TabIndex = 2;
             this.StopButton.Text = "ストップ";
             this.StopButton.UseVisualStyleBackColor = true;
+            this.StopButton.Click += new System.EventHandler(this.StopButton_Click);
             // 
             // ResetButton
             // 
             this.ResetButton.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.ResetButton.Location = new System.Drawing.Point(43, 207);
+            this.ResetButton.Location = new System.Drawing.Point(50, 234);
             this.ResetButton.Name = "ResetButton";
-            this.ResetButton.Size = new System.Drawing.Size(188, 92);
+            this.ResetButton.Size = new System.Drawing.Size(152, 65);
             this.ResetButton.TabIndex = 3;
             this.ResetButton.Text = "リセット";
             this.ResetButton.UseVisualStyleBackColor = true;
+            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
-            // button4
+            // RapButton
             // 
-            this.button4.Location = new System.Drawing.Point(237, 207);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(188, 92);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.RapButton.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.RapButton.Location = new System.Drawing.Point(245, 234);
+            this.RapButton.Name = "RapButton";
+            this.RapButton.Size = new System.Drawing.Size(152, 65);
+            this.RapButton.TabIndex = 4;
+            this.RapButton.Text = "ラップ";
+            this.RapButton.UseVisualStyleBackColor = true;
+            this.RapButton.Click += new System.EventHandler(this.RapButton_Click);
             // 
-            // listBox1
+            // Items
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(431, 31);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(117, 268);
-            this.listBox1.TabIndex = 5;
+            this.Items.FormattingEnabled = true;
+            this.Items.ItemHeight = 12;
+            this.Items.Location = new System.Drawing.Point(431, 31);
+            this.Items.Name = "Items";
+            this.Items.Size = new System.Drawing.Size(117, 268);
+            this.Items.TabIndex = 5;
+            // 
+            // tmDisp
+            // 
+            this.tmDisp.Tick += new System.EventHandler(this.tmDisp_Tick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.SteelBlue;
             this.ClientSize = new System.Drawing.Size(569, 316);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.Items);
+            this.Controls.Add(this.RapButton);
             this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.StopButton);
             this.Controls.Add(this.StartButton);
             this.Controls.Add(this.lbTimerDisp);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -115,8 +127,9 @@ namespace StopWatch {
         private System.Windows.Forms.Button StartButton;
         private System.Windows.Forms.Button StopButton;
         private System.Windows.Forms.Button ResetButton;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button RapButton;
+        private System.Windows.Forms.ListBox Items;
+        private System.Windows.Forms.Timer tmDisp;
     }
 }
 
