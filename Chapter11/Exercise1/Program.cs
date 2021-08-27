@@ -37,7 +37,13 @@ namespace Exercise1
         private static void Exercise1_2(string file)
         {
             var xdoc = XDocument.Load(file);
-
+            var firstplayed = xdoc.Root.Elements();
+            foreach (var xballsport in firstplayed)
+            {                
+                var xname = xballsport.Element("name");
+                XAttribute xkanji = xname.Attribute("kanji");
+                Console.WriteLine("{0}", xkanji.Value);
+            }
         }
 
         private static void Exercise1_3(string file)
