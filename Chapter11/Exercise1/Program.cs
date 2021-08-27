@@ -37,7 +37,7 @@ namespace Exercise1
         private static void Exercise1_2(string file)
         {
             var xdoc = XDocument.Load(file);
-            var firstplayed = xdoc.Root.Elements();
+            var firstplayed = xdoc.Root.Elements().OrderBy(x => (string)(x.Element("firstplayed")));
             foreach (var xballsport in firstplayed)
             {                
                 var xname = xballsport.Element("name");
