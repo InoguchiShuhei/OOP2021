@@ -32,9 +32,7 @@ namespace RssReader
         {
             using (var wc = new WebClient())
             {
-                wc.Headers.Add("Content-type", "charset=UTF-8");
-                //var uriString = string.Format(
-                    //@"http://rss.weather.yahoo.co.jp/rss/days/{0}.xml");
+                wc.Headers.Add("Content-type", "charset=UTF-8");               
                 var url = new Uri(uri);
                 var stream = wc.OpenRead(url);
 
@@ -42,7 +40,7 @@ namespace RssReader
                 var nodes = xdoc.Root.Descendants("title");
                 foreach (var node in nodes)
                 {
-                    string s = Regex.Replace(node.Value, "【|】", "");
+                    lbTitles.Items.Add(Regex.Replace(node.Value, "【|】", ""));
                 }
             }
         }

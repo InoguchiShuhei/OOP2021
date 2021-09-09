@@ -48,7 +48,7 @@ namespace RssReader
             // 
             // tbUrl
             // 
-            this.tbUrl.Location = new System.Drawing.Point(184, 17);
+            this.tbUrl.Location = new System.Drawing.Point(272, 19);
             this.tbUrl.Name = "tbUrl";
             this.tbUrl.Size = new System.Drawing.Size(509, 22);
             this.tbUrl.TabIndex = 1;
@@ -57,14 +57,14 @@ namespace RssReader
             // 
             this.lbTitles.FormattingEnabled = true;
             this.lbTitles.ItemHeight = 15;
-            this.lbTitles.Location = new System.Drawing.Point(17, 53);
+            this.lbTitles.Location = new System.Drawing.Point(12, 59);
             this.lbTitles.Name = "lbTitles";
-            this.lbTitles.Size = new System.Drawing.Size(143, 379);
+            this.lbTitles.Size = new System.Drawing.Size(269, 379);
             this.lbTitles.TabIndex = 2;
             // 
             // wbBrowser
             // 
-            this.wbBrowser.Location = new System.Drawing.Point(184, 54);
+            this.wbBrowser.Location = new System.Drawing.Point(287, 60);
             this.wbBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.wbBrowser.Name = "wbBrowser";
             this.wbBrowser.ScriptErrorsSuppressed = true;
@@ -73,7 +73,7 @@ namespace RssReader
             // 
             // btRead
             // 
-            this.btRead.Location = new System.Drawing.Point(702, 17);
+            this.btRead.Location = new System.Drawing.Point(797, 18);
             this.btRead.Name = "btRead";
             this.btRead.Size = new System.Drawing.Size(75, 23);
             this.btRead.TabIndex = 4;
@@ -85,7 +85,7 @@ namespace RssReader
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(903, 450);
             this.Controls.Add(this.btRead);
             this.Controls.Add(this.wbBrowser);
             this.Controls.Add(this.lbTitles);
