@@ -15,6 +15,9 @@ namespace RssReader
 {
     public partial class Form1 : Form
     {
+        private object cityCode;
+        List<string> link = new List<string>();
+
         public Form1()
         {
             InitializeComponent();
@@ -33,12 +36,13 @@ namespace RssReader
                 wc.Headers.Add("Content-type", "charset=UTF-8");                
                 var url = new Uri(uri);
                 var stream = wc.OpenRead(url);
+                
 
                 XDocument xdoc = XDocument.Load(stream);
                 var nodes = xdoc.Root.Descendants("title");
                 foreach (var node in nodes)
                 {
-                    lbTitles.Items.Add(node.Value);
+                    lbTitles.Items.Add(node.Value);                   
                 }
             }
         }
