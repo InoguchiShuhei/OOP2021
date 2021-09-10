@@ -15,8 +15,7 @@ namespace RssReader
 {
     public partial class Form1 : Form
     {
-        private object cityCode;
-        List<string> link = new List<string>();
+        IEnumerable<ItemData> items = null;
 
         public Form1()
         {
@@ -33,18 +32,30 @@ namespace RssReader
         {
             using (var wc = new WebClient())
             {
-                wc.Headers.Add("Content-type", "charset=UTF-8");                
-                var url = new Uri(uri);
-                var stream = wc.OpenRead(url);
+                wc.Headers.Add("Content-type", "charset=UTF-8");                                
+                var stream = wc.OpenRead(uri);
                 
 
                 XDocument xdoc = XDocument.Load(stream);
-                var nodes = xdoc.Root.Descendants("title");
-                foreach (var node in nodes)
+                items = xdoc.Root.Descendants("item").Select(x => new ItemData
                 {
-                    lbTitles.Items.Add(node.Value);                   
+                    Title = (string)x.Element("title"),
+                    Link = (string)x.Element("link"),
+                    PubDate = (DateTime)x.Element("pubDate"),
+                    Description = (string)x.Element("description")
+                });
+
+                foreach (var item in items)
+                {
+                    lbTitles.Items.Add(item.Title);                    
                 }
             }
+        }
+
+        private void lbTitles_Click(object sender, EventArgs e)
+        {
+            string link = (items.ToArray())[lbTitles.SelectedIndex].Link;
+            wbBrowser.Url = new Uri(link);
         }
     }
 }

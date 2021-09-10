@@ -61,6 +61,7 @@ namespace RssReader
             this.lbTitles.Name = "lbTitles";
             this.lbTitles.Size = new System.Drawing.Size(269, 379);
             this.lbTitles.TabIndex = 2;
+            this.lbTitles.SelectedIndexChanged += new System.EventHandler(this.lbTitles_Click);
             // 
             // wbBrowser
             // 
@@ -73,9 +74,9 @@ namespace RssReader
             // 
             // btRead
             // 
-            this.btRead.Location = new System.Drawing.Point(797, 18);
+            this.btRead.Location = new System.Drawing.Point(799, 16);
             this.btRead.Name = "btRead";
-            this.btRead.Size = new System.Drawing.Size(75, 23);
+            this.btRead.Size = new System.Drawing.Size(71, 26);
             this.btRead.TabIndex = 4;
             this.btRead.Text = "読込み";
             this.btRead.UseVisualStyleBackColor = true;

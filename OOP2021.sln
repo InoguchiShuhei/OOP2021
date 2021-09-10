@@ -102,6 +102,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApp", "WeatherApp\WeatherApp\WeatherApp.csproj", "{FD68DBE4-DACA-43FB-BE1F-0CE55DA13DB6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RssReader", "RssReader", "{131DA6D8-46B2-478D-A160-AE1E0954FDAB}"
+	ProjectSection(SolutionItems) = preProject
+		RssReader\RssReader\ItemData.cs = RssReader\RssReader\ItemData.cs
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RssReader", "RssReader\RssReader\RssReader.csproj", "{E913582C-7BB4-431E-AD15-3CC953C89618}"
 EndProject
