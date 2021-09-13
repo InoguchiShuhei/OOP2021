@@ -51,11 +51,14 @@ namespace RssReader
                 }
             }
         }
-
+        //リストボックスクリックイベントハンドラ
         private void lbTitles_Click(object sender, EventArgs e)
         {
-            string link = (items.ToArray())[lbTitles.SelectedIndex].Link;
+            string link = (items.ToArray())[lbTitles.SelectedIndex].Link;//配列へ変換して[ ]でアクセス
             wbBrowser.Url = new Uri(link);
+
+            lbDescription.Text = "概要\n";
+            lbDescription.Text = (items.ToArray())[lbTitles.SelectedIndex].Description;
         }
     }
 }
