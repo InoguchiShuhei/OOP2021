@@ -55,10 +55,17 @@ namespace RssReader
         private void lbTitles_Click(object sender, EventArgs e)
         {
             string link = (items.ToArray())[lbTitles.SelectedIndex].Link;//配列へ変換して[ ]でアクセス
-            wbBrowser.Url = new Uri(link);
+            //wbBrowser.Url = new Uri(link);
 
             lbDescription.Text = "概要\n";
-            lbDescription.Text = (items.ToArray())[lbTitles.SelectedIndex].Description;
+            lbDescription.Text += (items.ToArray())[lbTitles.SelectedIndex].Description;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //
+            var wbForm = new Form2((items.ToArray())[lbTitles.SelectedIndex].Link);
+            wbForm.Show();
         }
     }
 }
