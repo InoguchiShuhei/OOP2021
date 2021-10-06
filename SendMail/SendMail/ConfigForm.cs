@@ -42,19 +42,7 @@ namespace SendMail
         {
             SettingRegist();
 
-            var xws = new XmlWriterSettings
-            {
-                Encoding = new System.Text.UTF8Encoding(false),
-                Indent = true,
-                IndentChars = " ",
-            };
-
-            using (var writer = XmlWriter.Create("mailsetting"))
-            {
-                var serializer = new DataContractSerializer(xws.GetType());
-                serializer.WriteObject(writer, xws);
-            }
-
+            
             this.Close();
 
             //form1.tbTo.Text = tbUserName.Text;
@@ -64,6 +52,21 @@ namespace SendMail
             //this.Close();
         }
 
+        
+
+        private void btApply_Click(object sender, EventArgs e)
+        {
+            SettingRegist();
+
+            
+
+
+            //form1.tbTo.Text = tbUserName.Text;
+            //form1.tbCc.Text = tbUserName.Text;
+            //form1.tbBcc.Text = tbUserName.Text;
+            //form1.ShowDialog();
+        }
+
         private void SettingRegist()
         {
             settings.Host = tbHost.Text;
@@ -71,16 +74,19 @@ namespace SendMail
             settings.MailAddr = tbUserName.Text;
             settings.Pass = tbPass.Text;
             settings.Ssl = cbSsl.Checked;
-        }
 
-        private void btApply_Click(object sender, EventArgs e)
-        {
-            SettingRegist();
+            var xws = new XmlWriterSettings
+            {
+                Encoding = new System.Text.UTF8Encoding(false),
+                Indent = true,
+                IndentChars = " ",
+            };
 
-            //form1.tbTo.Text = tbUserName.Text;
-            //form1.tbCc.Text = tbUserName.Text;
-            //form1.tbBcc.Text = tbUserName.Text;
-            //form1.ShowDialog();
+            using (var writer = XmlWriter.Create("mailsetting.xml", xws))
+            {
+                var serializer = new DataContractSerializer(xws.GetType());
+                serializer.WriteObject(writer, xws);
+            }
         }
 
         private void btCancel_Click(object sender, EventArgs e)
