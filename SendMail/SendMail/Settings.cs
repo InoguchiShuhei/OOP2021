@@ -51,7 +51,7 @@ namespace SendMail
 
         public string sPass()
         {
-            return "OjsInfosys2019";
+            return "Infosys2021";
         }
 
         public bool bSsl()

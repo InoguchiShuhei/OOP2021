@@ -51,16 +51,29 @@ namespace SendMail
                 SmtpClient smtpClient = new SmtpClient();
                 //メール送信のための認証情報を設定(ユーザー名、パスワード)
                 smtpClient.Credentials = new NetworkCredential(settings.MailAddr, settings.Pass);
-                smtpClient.Host = "smtp.gmail.com";
-                smtpClient.Port = 587;
-                smtpClient.EnableSsl = true;
-                smtpClient.Send(mailMessage);
+                smtpClient.Host = settings.Host;
+                smtpClient.Port = settings.Port;
+                smtpClient.EnableSsl = settings.Ssl;
+                smtpClient.SendCompleted += SmtpClient_SendCompleted;
 
-                MessageBox.Show("送信完了");
+                string userState = "SendMail";
+                smtpClient.SendAsync(mailMessage, userState);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void SmtpClient_SendCompleted(object sender, AsyncCompletedEventArgs e)
+        {
+            if (e.Error != null)
+            {
+                MessageBox.Show(e.Error.Message);
+            }
+            else
+            {
+                MessageBox.Show("送信完了");
             }
         }
 

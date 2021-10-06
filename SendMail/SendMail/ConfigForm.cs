@@ -4,9 +4,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace SendMail
 {
@@ -39,6 +41,20 @@ namespace SendMail
         private void btOk_Click(object sender, EventArgs e)
         {
             SettingRegist();
+
+            var xws = new XmlWriterSettings
+            {
+                Encoding = new System.Text.UTF8Encoding(false),
+                Indent = true,
+                IndentChars = " ",
+            };
+
+            using (var writer = XmlWriter.Create("mailsetting"))
+            {
+                var serializer = new DataContractSerializer(xws.GetType());
+                serializer.WriteObject(writer, xws);
+            }
+
             this.Close();
 
             //form1.tbTo.Text = tbUserName.Text;
