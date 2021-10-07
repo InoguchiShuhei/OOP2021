@@ -15,12 +15,13 @@ namespace SendMail
     public partial class ConfigForm : Form
     {
 
-        public Settings settings = Settings.getInstance();
+        Settings settings = Settings.getInstance();
         //Form1 form1;
 
         public ConfigForm()
         {
             InitializeComponent();
+            
         }
 
         private void btDefault_Click(object sender, EventArgs e)
@@ -84,8 +85,8 @@ namespace SendMail
 
             using (var writer = XmlWriter.Create("mailsetting.xml", xws))
             {
-                var serializer = new DataContractSerializer(xws.GetType());
-                serializer.WriteObject(writer, xws);
+                var serializer = new DataContractSerializer(settings.GetType());
+                serializer.WriteObject(writer, settings);
             }
         }
 
@@ -93,5 +94,15 @@ namespace SendMail
         {
             this.Close();
         }        
+
+        private void ConfigForm_Load(object sender, EventArgs e)
+        {
+            tbHost.Text = settings.Host;
+            tbPort.Text = settings.Port.ToString();
+            tbUserName.Text = settings.MailAddr;
+            tbPass.Text = settings.Pass;
+            cbSsl.Checked = settings.Ssl;
+            tbSender.Text = settings.MailAddr;
+        }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -16,11 +17,16 @@ namespace SendMail
 {
     public partial class Form1 : Form
     {
-        public ConfigForm configForm = new ConfigForm();
-        public Settings settings = Settings.getInstance();
+        ConfigForm configForm = new ConfigForm();
+        Settings settings = Settings.getInstance();
         public Form1()
         {
             InitializeComponent();
+            var filepass = @"./mailsetting.xml";
+            if (!File.Exists(filepass))
+            {
+                configForm.ShowDialog();
+            }
         }
 
         private void btSend_Click(object sender, EventArgs e)
@@ -31,7 +37,7 @@ namespace SendMail
                 //メール送信ためのインスタンスを生成
                 MailMessage mailMessage = new MailMessage();
                 //差出人アドレス
-                mailMessage.From = new MailAddress(configForm.settings.MailAddr);
+                mailMessage.From = new MailAddress(settings.MailAddr);
                 //宛先(To)
                 mailMessage.To.Add(tbTo.Text);
 
@@ -89,7 +95,13 @@ namespace SendMail
             using (var reader = XmlReader.Create("mailsetting.xml"))
             {
                 var serializer = new DataContractSerializer(typeof(Settings));
-                var readData = serializer.ReadObject(reader) as Settings;
+                var readSettings = serializer.ReadObject(reader) as Settings;
+
+                settings.Host = readSettings.Host;
+                settings.Port = readSettings.Port;
+                settings.MailAddr = readSettings.MailAddr;
+                settings.Pass = readSettings.Pass;
+                settings.Ssl = readSettings.Ssl;
             }
         }
     }
