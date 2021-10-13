@@ -41,9 +41,10 @@ namespace SendMail
 
         private void btOk_Click(object sender, EventArgs e)
         {
-            SettingRegist();
+            //settings.setSendConfig(tbHost.Text, int.Parse(tbPort.Text), 
+            //                      tbUserName.Text, tbPass.Text, cbSsl.Checked);
 
-            
+            btApply_Click(sender, e);
             this.Close();
 
             //form1.tbTo.Text = tbUserName.Text;
@@ -57,9 +58,10 @@ namespace SendMail
 
         private void btApply_Click(object sender, EventArgs e)
         {
-            SettingRegist();
+            settings.setSendConfig(tbHost.Text, int.Parse(tbPort.Text),
+                                    tbUserName.Text, tbPass.Text, cbSsl.Checked);
 
-            
+
 
 
             //form1.tbTo.Text = tbUserName.Text;

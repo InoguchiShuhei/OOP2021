@@ -31,6 +31,12 @@ namespace SendMail
 
         private void btSend_Click(object sender, EventArgs e)
         {
+            if (!Settings.Set)
+            {
+                MessageBox.Show("送信情報を設定してください");
+                return;
+            }
+
             try
             {
 
@@ -103,6 +109,21 @@ namespace SendMail
                 settings.Pass = readSettings.Pass;
                 settings.Ssl = readSettings.Ssl;
             }
+        }
+
+        private void 終了XToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void 新規作成NToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tbTo.Clear();
+            tbCc.Clear();
+            tbBcc.Clear();
+            tbTitle.Clear();
+            tbMessage.Clear();
+
         }
     }
 }
