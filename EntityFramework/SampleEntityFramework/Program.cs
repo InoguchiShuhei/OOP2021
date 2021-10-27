@@ -229,7 +229,6 @@ namespace SampleEntityFramework
             {
                 Console.WriteLine($"{book.Title}");
             }
-
         }
 
         private static void Exercise13_1_4()
