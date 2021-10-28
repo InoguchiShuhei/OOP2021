@@ -19,14 +19,14 @@ namespace CarReportSystem
         public fmMain()
         {
             InitializeComponent();
-            dgvRegistData.DataSource = listCarReport;
+            //dgvRegistData.DataSource = listCarReport;
 
 
         }
 
         private void fmMain_Load(object sender, EventArgs e)
         {
-            dgvRegistData.Columns[5].Visible = false;
+            //dgvRegistData.Columns[5].Visible = false;
         }
 
         private void btExit_Click(object sender, EventArgs e)
@@ -150,28 +150,35 @@ namespace CarReportSystem
         //データを削除ボタン
         private void btDataDelete_Click(object sender, EventArgs e)
         {
-            if (dgvRegistData.CurrentCell != null)
-            {
-                listCarReport.RemoveAt(dgvRegistData.CurrentRow.Index);
-            }
+            //if (dgvRegistData.CurrentCell != null)
+            //{
+            //    listCarReport.RemoveAt(dgvRegistData.CurrentRow.Index);
+            //}
         }
 
         //データを編集ボタン
         private void btDataCorrect_Click(object sender, EventArgs e)
         {
-            listCarReport[dgvRegistData.CurrentRow.Index].UpDate(dtpDate.Value,
-                                                                cbAuthor.Text,
-                                                                selectedGroup(),
-                                                                cbCarName.Text,
-                                                                tbReport.Text,
-                                                                pbPicture.Image
-                                                                );
-            dgvRegistData.Refresh(); //コントロールの強制再描画
+            //listCarReport[dgvRegistData.CurrentRow.Index].UpDate(dtpDate.Value,
+            //                                                    cbAuthor.Text,
+            //                                                    selectedGroup(),
+            //                                                    cbCarName.Text,
+            //                                                    tbReport.Text,
+            //                                                    pbPicture.Image
+            //                                                    );
+            //dgvRegistData.Refresh(); //コントロールの強制再描画
         }
 
         //ファイルに保存ボタン
         private void btSave_Click(object sender, EventArgs e)
         {
+            if (carReportDataGridView.CurrentRow == null) return;
+            carReportDataGridView.CurrentRow.Cells[1].Value = dtpDate.Value;  //日付
+            carReportDataGridView.CurrentRow.Cells[2].Value = cbAuthor.Text;  //記録者
+            carReportDataGridView.CurrentRow.Cells[3].Value = selectedGroup();   //メーカー
+            carReportDataGridView.CurrentRow.Cells[4].Value = cbCarName.Text; //車名
+            carReportDataGridView.CurrentRow.Cells[5].Value = tbReport.Text;  //レポート
+#if false
             if (sfdFileSave.ShowDialog() == DialogResult.OK)
             {
                 try
@@ -189,11 +196,15 @@ namespace CarReportSystem
                 }
 
             }
+
+#endif
         }
 
         //ファイルを開くボタン
         private void btOpen_Click(object sender, EventArgs e)
         {
+            this.carReportTableAdapter.Fill(this.infosys202133DataSet.CarReport);
+#if false
             if (ofdFileOpen.ShowDialog() == DialogResult.OK)
             {
                 try
@@ -219,11 +230,29 @@ namespace CarReportSystem
                     setCbCarName(listCarReport[i].CarName);
                 }
             }
+#else
 
+
+#endif
         }
 
         private void tbReport_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void carReportBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.carReportBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.infosys202133DataSet);
+
+        }
+
+        private void fmMain_Load_1(object sender, EventArgs e)
+        {
+            // TODO: このコード行はデータを 'infosys202133DataSet.CarReport' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
+            
 
         }
     }
