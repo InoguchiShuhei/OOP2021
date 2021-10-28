@@ -174,11 +174,12 @@ namespace CarReportSystem
         {
             if (carReportDataGridView.CurrentRow == null) return;
 
-            carReportDataGridView.CurrentRow.Cells[1].Value = dtpDate.Value;  //日付
-            carReportDataGridView.CurrentRow.Cells[2].Value = cbAuthor.Text;  //記録者
-            carReportDataGridView.CurrentRow.Cells[3].Value = selectedGroup();   //メーカー
-            carReportDataGridView.CurrentRow.Cells[4].Value = cbCarName.Text; //車名
-            carReportDataGridView.CurrentRow.Cells[5].Value = tbReport.Text;  //レポート
+            carReportDataGridView.CurrentRow.Cells[1].Value = dtpDate.Value;    //日付
+            carReportDataGridView.CurrentRow.Cells[2].Value = cbAuthor.Text;    //記録者
+            carReportDataGridView.CurrentRow.Cells[3].Value = selectedGroup(); //メーカー
+            carReportDataGridView.CurrentRow.Cells[4].Value = cbCarName.Text;   //車名
+            carReportDataGridView.CurrentRow.Cells[5].Value = tbReport.Text;    //レポート
+            carReportDataGridView.CurrentRow.Cells[6].Value = pbPicture.Image;  //画像
 
             //データベースへ反映
             this.Validate();
@@ -205,8 +206,7 @@ namespace CarReportSystem
 
 #endif
         }
-
-        //ファイルを開くボタン
+        
         private void btConnect_Click(object sender, EventArgs e)
         {
             this.carReportTableAdapter.Fill(this.infosys202133DataSet.CarReport);
