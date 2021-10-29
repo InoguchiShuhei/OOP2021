@@ -179,7 +179,7 @@ namespace CarReportSystem
             carReportDataGridView.CurrentRow.Cells[3].Value = selectedGroup(); //メーカー
             carReportDataGridView.CurrentRow.Cells[4].Value = cbCarName.Text;   //車名
             carReportDataGridView.CurrentRow.Cells[5].Value = tbReport.Text;    //レポート
-            carReportDataGridView.CurrentRow.Cells[6].Value = pbPicture.Image;  //画像
+            carReportDataGridView.CurrentRow.Cells[6].Value = ImageToByteArray(pbPicture.Image);  //画像
 
             //データベースへ反映
             this.Validate();
@@ -259,6 +259,47 @@ namespace CarReportSystem
         {
             // TODO: このコード行はデータを 'infosys202133DataSet.CarReport' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
             
+
+        }
+
+        private void carReportDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            if (carReportDataGridView.CurrentRow == null) return;
+            try
+            {
+                dtpDate.Value = (DateTime)carReportDataGridView.CurrentRow.Cells[1].Value;
+                cbAuthor.Text = carReportDataGridView.CurrentRow.Cells[2].Value.ToString();
+                //メーカー (文字列 → 列挙型)
+                setMakerRadioButton((CarReport.MakerGroup)Enum.Parse(typeof(CarReport.MakerGroup),carReportDataGridView.CurrentRow.Cells[3].Value.ToString()));
+                cbCarName.Text = carReportDataGridView.CurrentRow.Cells[4].Value.ToString();
+                tbReport.Text = carReportDataGridView.CurrentRow.Cells[5].Value.ToString();
+                pbPicture.Image = ByteArrayToImage((byte[])carReportDataGridView.CurrentRow.Cells[6].Value);
+            }
+            catch (Exception)
+            {
+                pbPicture.Image = null;
+            }
+            
+            
+        }
+
+        // バイト配列をImageオブジェクトに変換
+        public static Image ByteArrayToImage(byte[] b)
+        {
+            ImageConverter imgconv = new ImageConverter();
+            Image img = (Image)imgconv.ConvertFrom(b);
+            return img;
+        }
+        // Imageオブジェクトをバイト配列に変換
+        public static byte[] ImageToByteArray(Image img)
+        {
+            ImageConverter imgconv = new ImageConverter();
+            byte[] b = (byte[])imgconv.ConvertTo(img, typeof(byte[]));
+            return b;
+        }
+
+        private void carReportDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
 
         }
     }
