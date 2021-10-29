@@ -247,19 +247,24 @@ namespace CarReportSystem
 
         }
 
-        private void carReportBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.carReportBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.infosys202133DataSet);
+        //private void carReportBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        //{
+        //    this.Validate();
+        //    this.carReportBindingSource.EndEdit();
+        //    this.tableAdapterManager.UpdateAll(this.infosys202133DataSet);
 
-        }
+        //}
 
         private void fmMain_Load_1(object sender, EventArgs e)
         {
             // TODO: このコード行はデータを 'infosys202133DataSet.CarReport' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
-            
-
+            carReportDataGridView.Columns[0].Visible = false;
+            carReportDataGridView.Columns[1].HeaderText = "日付";
+            carReportDataGridView.Columns[2].HeaderText = "記録者";
+            carReportDataGridView.Columns[3].HeaderText = "メーカー";
+            carReportDataGridView.Columns[4].HeaderText = "車名";
+            carReportDataGridView.Columns[5].HeaderText = "レポート";
+            carReportDataGridView.Columns[6].HeaderText = "写真";
         }
 
         private void carReportDataGridView_SelectionChanged(object sender, EventArgs e)
@@ -301,6 +306,16 @@ namespace CarReportSystem
         private void carReportDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
 
+        }
+
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        {
+            //dtpDate.Value = true;
+            cbAuthor.Text = null;            
+            rbOther.Checked = true;
+            cbCarName.Text = null;
+            tbReport.Text = null;
+            pbPicture.Image = null;
         }
     }
 }
