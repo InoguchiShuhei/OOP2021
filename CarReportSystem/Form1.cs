@@ -308,7 +308,7 @@ namespace CarReportSystem
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
-            //dtpDate.Value = true;
+            dtpDate.Value = DateTime.Today;
             cbAuthor.Text = null;            
             rbOther.Checked = true;
             cbCarName.Text = null;
