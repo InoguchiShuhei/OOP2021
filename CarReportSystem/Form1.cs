@@ -20,8 +20,6 @@ namespace CarReportSystem
         {
             InitializeComponent();
             //dgvRegistData.DataSource = listCarReport;
-
-
         }
 
         private void fmMain_Load(object sender, EventArgs e)
@@ -264,7 +262,7 @@ namespace CarReportSystem
             carReportDataGridView.Columns[3].HeaderText = "メーカー";
             carReportDataGridView.Columns[4].HeaderText = "車名";
             carReportDataGridView.Columns[5].HeaderText = "レポート";
-            carReportDataGridView.Columns[6].HeaderText = "写真";
+            carReportDataGridView.Columns[6].Visible = false;
         }
 
         private void carReportDataGridView_SelectionChanged(object sender, EventArgs e)
