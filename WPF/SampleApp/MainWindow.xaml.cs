@@ -34,5 +34,10 @@ namespace SampleApp
         {
             MessageBox.Show("キャンセルされました。");
         }
+
+        private void messageTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

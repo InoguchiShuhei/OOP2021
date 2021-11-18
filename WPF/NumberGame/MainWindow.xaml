@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NumberGame"
         mc:Ignorable="d"
-        Title="MainWindow" Height="622" Width="500">
+        Title="MainWindow" Height="630" Width="515">
     <Grid Margin="0,0,0,-3">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -23,31 +23,34 @@
             <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="100"/>
         </Grid.ColumnDefinitions>
-        <Button Grid.Row="1" Height="100" Width="100"  Content="1"/>
-        <Button Grid.Row="1" Grid.Column="1" Height="100" Width="100"  Content="2"/>
-        <Button Grid.Row="1" Grid.Column="2" Height="100" Width="100"  Content="3"/>
-        <Button Grid.Row="1" Grid.Column="3" Height="100" Width="100"  Content="4"/>
-        <Button Grid.Row="1" Grid.Column="4" Height="100" Width="100"  Content="5"/>
-        <Button Grid.Row="2" Height="100" Width="100"  Content="6"/>
-        <Button Grid.Row="2" Grid.Column="1" Height="100" Width="100"  Content="7"/>
-        <Button Grid.Row="2" Grid.Column="2" Height="100" Width="100"  Content="8"/>
-        <Button Grid.Row="2" Grid.Column="3" Height="100" Width="100"  Content="9"/>
-        <Button Grid.Row="2" Grid.Column="4" Height="100" Width="100"  Content="10"/>
-        <Button Grid.Row="3" Height="100" Width="100"  Content="11"/>
-        <Button Grid.Row="3" Grid.Column="1" Height="100" Width="100"  Content="12"/>
-        <Button Grid.Row="3" Grid.Column="2" Height="100" Width="100"  Content="13"/>
-        <Button Grid.Row="3" Grid.Column="3" Height="100" Width="100"  Content="14"/>
-        <Button Grid.Row="3" Grid.Column="4" Height="100" Width="100"  Content="15"/>
-        <Button Grid.Row="4" Height="100" Width="100"  Content="16"/>
-        <Button Grid.Row="4" Grid.Column="1" Height="100" Width="100"  Content="17"/>
-        <Button Grid.Row="4" Grid.Column="2" Height="100" Width="100"  Content="18"/>
-        <Button Grid.Row="4" Grid.Column="3" Height="100" Width="100"  Content="19"/>
-        <Button Grid.Row="4" Grid.Column="4" Height="100" Width="100"  Content="20"/>
-        <Button Grid.Row="5" Height="100" Width="100"  Content="21"/>
-        <Button Grid.Row="5" Grid.Column="1" Height="100" Width="100"  Content="22"/>
-        <Button Grid.Row="5" Grid.Column="2" Height="100" Width="100"  Content="23"/>
-        <Button Grid.Row="5" Grid.Column="3" Height="100" Width="100"  Content="24"/>
-        <Button Grid.Row="5" Grid.Column="4" Height="100" Width="100"  Content="25"/>
-        <TextBox Grid.ColumnSpan="5" Grid.Row="6" Height="Auto" Width="Auto" Text=""/>
+        <Button Grid.Row="1" Height="100" Width="100"  Content="1" Click="Button_Click"/>
+        <Button Grid.Row="1" Grid.Column="1" Height="100" Width="100"  Content="2" Click="Button_Click"/>
+        <Button Grid.Row="1" Grid.Column="2" Height="100" Width="100"  Content="3" Click="Button_Click"/>
+        <Button Grid.Row="1" Grid.Column="3" Height="100" Width="100"  Content="4" Click="Button_Click"/>
+        <Button Grid.Row="1" Grid.Column="4" Height="100" Width="100"  Content="5" Click="Button_Click"/>
+        <Button Grid.Row="2" Height="100" Width="100"  Content="6" Click="Button_Click"/>
+        <Button Grid.Row="2" Grid.Column="1" Height="100" Width="100"  Content="7" Click="Button_Click"/>
+        <Button Grid.Row="2" Grid.Column="2" Height="100" Width="100"  Content="8" Click="Button_Click"/>
+        <Button Grid.Row="2" Grid.Column="3" Height="100" Width="100"  Content="9" Click="Button_Click"/>
+        <Button Grid.Row="2" Grid.Column="4" Height="100" Width="100"  Content="10" Click="Button_Click"/>
+        <Button Grid.Row="3" Height="100" Width="100"  Content="11" Click="Button_Click"/>
+        <Button Grid.Row="3" Grid.Column="1" Height="100" Width="100"  Content="12" Click="Button_Click"/>
+        <Button Grid.Row="3" Grid.Column="2" Height="100" Width="100"  Content="13" Click="Button_Click"/>
+        <Button Grid.Row="3" Grid.Column="3" Height="100" Width="100"  Content="14" Click="Button_Click"/>
+        <Button Grid.Row="3" Grid.Column="4" Height="100" Width="100"  Content="15" Click="Button_Click"/>
+        <Button Grid.Row="4" Height="100" Width="100"  Content="16" Click="Button_Click"/>
+        <Button Grid.Row="4" Grid.Column="1" Height="100" Width="100"  Content="17" Click="Button_Click"/>
+        <Button Grid.Row="4" Grid.Column="2" Height="100" Width="100"  Content="18" Click="Button_Click"/>
+        <Button Grid.Row="4" Grid.Column="3" Height="100" Width="100"  Content="19" Click="Button_Click"/>
+        <Button Grid.Row="4" Grid.Column="4" Height="100" Width="100"  Content="20" Click="Button_Click"/>
+        <Button Grid.Row="5" Height="100" Width="100"  Content="21" Click="Button_Click"/>
+        <Button Grid.Row="5" Grid.Column="1" Height="100" Width="100"  Content="22" Click="Button_Click"/>
+        <Button Grid.Row="5" Grid.Column="2" Height="100" Width="100"  Content="23" Click="Button_Click"/>
+        <Button Grid.Row="5" Grid.Column="3" Height="100" Width="100"  Content="24" Click="Button_Click"/>
+        <Button Grid.Row="5" Grid.Column="4" Height="100" Width="100"  Content="25" Click="Button_Click"/>
+        <TextBox x:Name="tbTimer" Grid.ColumnSpan="5" Grid.Row="0" Height="Auto" Width="Auto" 
+                 FontSize="30" Text="00:00:00"/>
+        <TextBox x:Name="tbNumber" Grid.ColumnSpan="5" Grid.Row="6" Height="Auto" Width="Auto" 
+                 FontSize="30" Text="★数当てゲーム★"/>
     </Grid>
 </Window>
