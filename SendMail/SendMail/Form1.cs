@@ -25,6 +25,7 @@ namespace SendMail
             var filepass = @"./mailsetting.xml";
             if (!File.Exists(filepass))
             {
+                MessageBox.Show("xmlファイルの内容が正しくない");
                 configForm.ShowDialog();
             }
         }
@@ -54,16 +55,19 @@ namespace SendMail
                 if (tbBcc.Text != "")
                 {
                     mailMessage.Bcc.Add(tbBcc.Text);
-                }
-                if (tbMessage.Text != "")
-                {
-                    mailMessage.Body.Add(tbMessage.Text);
-                }
+                }                
 
                 //件名(タイトル)
                 mailMessage.Subject = tbTitle.Text;
                 //本文
-                mailMessage.Body = tbMessage.Text;
+                if (tbMessage.Text.Trim() == "")
+                {
+                    MessageBox.Show("本文が入力されていません");
+                }
+                else
+                {
+                    mailMessage.Body = tbMessage.Text;
+                }
 
                 //SMTPを使ってメールを送信する
                 SmtpClient smtpClient = new SmtpClient();
@@ -92,6 +96,11 @@ namespace SendMail
             else
             {
                 MessageBox.Show("送信完了");
+                tbTo.Text = null;
+                tbCc.Text = null;
+                tbBcc.Text = null;
+                tbTitle.Text = null;
+                tbMessage.Text = null;
             }
         }
 
