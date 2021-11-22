@@ -157,10 +157,10 @@ namespace Pelmanism
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
-            timer1.Tick += Timer1_Tick;
-            timer1.Interval = 1000;
-            gameSec = 60;
-            timer1.Start();
+            //timer1.Tick += Timer1_Tick;
+            //timer1.Interval = 1000;
+            //gameSec = 60;
+            //timer1.Start();
             //カードを混ぜる
             ShuffleCard(playingCards);
 
@@ -170,8 +170,8 @@ namespace Pelmanism
                 card.Close();
             }
             buttonStart.Enabled = false;  //スタートボタンの選択不可
-            //gameSec = 0;
-            //timer1.Start();
+            gameSec = 60;
+            timer1.Start();
 
             labelGuidance.Text = "クリックしてカードをめくってください";
         }
@@ -212,7 +212,18 @@ namespace Pelmanism
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            if (gameSec == 0)
+            {
+                timer1.Stop();
+                labelGuidance.Text = "ゲームオーバー";
+                buttonStart.Enabled = true;
+            }
 
+            if (gameSec > 0)
+            {
+                gameSec--;
+                labelSec.Text = "残り" + gameSec + "秒";
+            }
         }
     }
 }
