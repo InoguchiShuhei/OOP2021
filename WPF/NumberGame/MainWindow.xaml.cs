@@ -55,7 +55,7 @@ namespace NumberGame
             }else{
                 tbNumber.Text = "選んだ数字より小さいです。";
             }
-        }
+        }        
 
         //private void Window_Loaded(object sender, RoutedEventArgs e)
         //{
