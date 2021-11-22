@@ -69,6 +69,11 @@ namespace SendMail
                     mailMessage.Body = tbMessage.Text;
                 }
 
+                if (btSend.Enabled) //有効になっていたら
+                {
+                    btSend.Enabled = false; //無効にする
+                }
+
                 //SMTPを使ってメールを送信する
                 SmtpClient smtpClient = new SmtpClient();
                 //メール送信のための認証情報を設定(ユーザー名、パスワード)
@@ -84,7 +89,7 @@ namespace SendMail
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
+            }            
         }
 
         private void SmtpClient_SendCompleted(object sender, AsyncCompletedEventArgs e)
